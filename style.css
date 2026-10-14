@@ -41,6 +41,15 @@ body {
   background-attachment: fixed
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(226, 176, 74, .18), transparent 24%);
+  pointer-events: none;
+  z-index: -1
+}
+
 img {
   max-width: 100%;
   display: block
@@ -177,7 +186,8 @@ header.top {
 .brand img {
   width: 42px;
   height: 42px;
-  border-radius: 50%
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(226, 176, 74, .15)
 }
 
 .brand b {
@@ -383,7 +393,13 @@ header.top {
   background: linear-gradient(160deg, var(--gold-hi), var(--gold) 40%, #7a5818);
   box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 80px -20px rgba(226, 176, 74, .35);
   transform-style: preserve-3d;
-  transition: transform .15s ease-out
+  transition: transform .15s ease-out;
+  animation: float 6s ease-in-out infinite
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-8px) }
 }
 
 .frame img {
@@ -803,6 +819,30 @@ header.top {
   background: var(--bg-2);
   border: 1px solid var(--line);
   color: var(--mute)
+}
+
+.skill,
+.plan,
+.cert,
+.fact,
+.xcard,
+.ccard {
+  box-shadow: 0 22px 44px -30px rgba(0, 0, 0, .8)
+}
+
+.skill::before,
+.plan::before,
+.cert::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 40%);
+  pointer-events: none
+}
+
+.cert .im img,
+.studio-art-image img {
+  filter: saturate(1.08) contrast(1.08)
 }
 
 /* certificates */
